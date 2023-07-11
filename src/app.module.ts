@@ -4,10 +4,12 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
+import { UserModule } from './users/users.module';
 
 @Module({
   imports: [
     ProductsModule,
+    UserModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,

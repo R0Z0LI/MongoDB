@@ -28,13 +28,13 @@ export class ProductsController {
   }
 
   @Put(':id')
-  updateProduct(
+  async updateProduct(
     @Param('id') productId: string,
     @Body('title') prodTitle: string,
     @Body('description') prodDesc: string,
     @Body('price') prodPrice: number,
   ) {
-    return this.productsService.updateProduct(
+    return await this.productsService.updateProduct(
       productId,
       prodTitle,
       prodDesc,
