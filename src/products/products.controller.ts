@@ -1,4 +1,5 @@
 import { Controller, Post, Body, Get, Param, Put } from '@nestjs/common';
+import { Product } from './product.model';
 import { ProductsService } from './products.service';
 
 @Controller('products')
@@ -19,26 +20,19 @@ export class ProductsController {
   }
   @Get()
   getAllProducts() {
-    return this.productsService.getProducts();
+    return this.productsService.findAll();
   }
 
   @Get(':id')
   getProduct(@Param('id') productId: string) {
-    return this.productsService.getSingleProduct(productId);
+    return this.productsService.findOne(productId);
   }
 
   @Put(':id')
   async updateProduct(
     @Param('id') productId: string,
-    @Body('title') prodTitle: string,
-    @Body('description') prodDesc: string,
-    @Body('price') prodPrice: number,
+    @Body() updatedProduct: Product,
   ) {
-    return await this.productsService.updateProduct(
-      productId,
-      prodTitle,
-      prodDesc,
-      prodPrice,
-    );
+    return await this.productsService.updateProduct(productId, updatedProduct);
   }
 }

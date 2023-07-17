@@ -14,7 +14,9 @@ import { UserModule } from './users/users.module';
       envFilePath: '.env',
       isGlobal: true,
     }),
-    MongooseModule.forRoot(process.env.DB_URI),
+    MongooseModule.forRoot(
+      'mongodb://Rozoli2000:Rozoli2000@localhost:2717/admin',
+    ),
   ],
   controllers: [AppController],
   providers: [AppService],
