@@ -17,4 +17,9 @@ export class UserController {
     );
     return { id: generatedId };
   }
+
+  @Get()
+  getAllUsers() {
+    return this.userService.findAll();
+  }
 }
